@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     Sem_init(&s, 0); 
     printf("parent: begin\n");
     pthread_t c;
-    Pthread_create(&c, NULL, child, NULL);
+    pthread_create(&c, NULL, child, NULL);
     Sem_wait(&s); // wait here for child
     printf("parent: end\n");
     return 0;
