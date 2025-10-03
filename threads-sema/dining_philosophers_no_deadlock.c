@@ -79,11 +79,11 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < 5; i++) {
 	a[i].num_loops = atoi(argv[1]);
 	a[i].thread_id = i;
-	Pthread_create(&p[i], NULL, philosopher, &a[i]);
+	pthread_create(&p[i], NULL, philosopher, &a[i]);
     }
 
     for (i = 0; i < 5; i++) 
-	Pthread_join(p[i], NULL); 
+	pthread_join(p[i], NULL); 
 
     printf("dining: finished\n");
     return 0;
