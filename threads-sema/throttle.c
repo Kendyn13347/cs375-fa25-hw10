@@ -37,10 +37,10 @@ int main(int argc, char *argv[]) {
 
     int i;
     for (i = 0; i < num_threads; i++) 
-	Pthread_create(&c[i], NULL, child, (void *) (long long int)i);
+	pthread_create(&c[i], NULL, child, (void *) (long long int)i);
 
     for (i = 0; i < num_threads; i++) 
-	Pthread_join(c[i], NULL);
+	pthread_join(c[i], NULL);
 
     printf("parent: end\n");
     return 0;
