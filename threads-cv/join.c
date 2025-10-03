@@ -11,20 +11,20 @@ int done = 0;
 void *child(void *arg) {
     printf("child\n");
     sleep(1);
-    Mutex_lock(&m);
+    pthread_mutex_lock(&m);
     done = 1;
-    Cond_signal(&c);
-    Mutex_unlock(&m);
+    pthread_cond_signal(&c);
+    pthread_mutex_unlock(&m);
     return NULL;
 }
 int main(int argc, char *argv[]) {
     pthread_t p;
     printf("parent: begin\n");
-    Pthread_create(&p, NULL, child, NULL);
-    Mutex_lock(&m);
+    pthread_create(&p, NULL, child, NULL);
+    pthread_mutex_lock(&m);
     while (done == 0) 
-	Cond_wait(&c, &m); // releases lock when going to sleep
-    Mutex_unlock(&m);
+	pthread_cond_wait(&c, &m); // releases lock when going to sleep
+    pthread_mutex_unlock(&m);
     printf("parent: end\n");
     return 0;
 }
