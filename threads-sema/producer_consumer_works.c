@@ -99,13 +99,13 @@ int main(int argc, char *argv[]) {
     Sem_init(&mutex, 1);   // mutex
 
     pthread_t pid, cid[CMAX];
-    Pthread_create(&pid, NULL, producer, NULL); 
+    pthread_create(&pid, NULL, producer, NULL); 
     for (i = 0; i < consumers; i++) {
-	Pthread_create(&cid[i], NULL, consumer, (void *) (long long int) i); 
+	pthread_create(&cid[i], NULL, consumer, (void *) (long long int) i); 
     }
-    Pthread_join(pid, NULL); 
+    pthread_join(pid, NULL); 
     for (i = 0; i < consumers; i++) {
-	Pthread_join(cid[i], NULL); 
+	pthread_join(cid[i], NULL); 
     }
     return 0;
 }
