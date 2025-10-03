@@ -88,10 +88,10 @@ int main(int argc, char *argv[]) {
     
     rwlock_init(&mutex); 
     pthread_t c1, c2;
-    Pthread_create(&c1, NULL, reader, NULL);
-    Pthread_create(&c2, NULL, writer, NULL);
-    Pthread_join(c1, NULL);
-    Pthread_join(c2, NULL);
+    pthread_create(&c1, NULL, reader, NULL);
+    pthread_create(&c2, NULL, writer, NULL);
+    pthread_join(c1, NULL);
+    pthread_join(c2, NULL);
     printf("all done\n");
     return 0;
 }
